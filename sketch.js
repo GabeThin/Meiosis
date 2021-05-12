@@ -1,86 +1,119 @@
-function setup() {
-  createCanvas(600, 600);
-  size = 150;
-  cell = new Cell(width / 2, width / 2, size)
-  chrom1a = new Chromosome(width/2-(0.15*size), width/2-(0.15*size), size/10, "blue", "A")
-  chrom1b = new Chromosome(width/2-(0.15*size), width/2+(0.15*size), size/20, "blue", "B")
-  chrom2a = new Chromosome(width/2+(0.15*size), width/2-(0.15*size), size/10, "red", "a")
-  chrom2b = new Chromosome(width/2+(0.15*size), width/2+(0.15*size), size/20, "red", "b")
-}
-
 class Chromosome {
-  constructor(x, y, size, parent, allele) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
-    this.parent = parent;
-    this.allele = allele;
-  }
-  draw(){
-    stroke(this.parent);
-    line(this.x+this.size, this.y+this.size, this.x-this.size, this.y-this.size);
-    line(this.x-this.size, this.y+this.size, this.x+this.size, this.y-this.size);
-    stroke(0);
-    line(this.x-(this.size/1.5), this.y-(this.size/10), this.x-(this.size/10), this.y-(this.size/1.5));
-    text(this.allele, this.x-(this.size), this.y-(this.size));
-  }
+    constructor(x, y, size, parent) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.parent = parent;
+    }
+    show(){
+      stroke(this.parent)
+      line(this.x+this.size, this.y+this.size, this.x-this.size, this.y-this.size)
+      line(this.x-this.size, this.y+this.size, this.x+this.size, this.y-this.size)
+    }
 
-}
-
+  }
 class Cell {
-  constructor(x, y, size) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
-  }
-  draw(){
-    stroke("black")
-    ellipse(this.x, this.y, this.size, this.size)
-  }
-}
+    constructor(x, y, size) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+    }
+    show(){
+      stroke("black")
+      ellipse(this.x, this.y, this.size, this.size)
 
+    }
+
+  }
+
+cell = new Cell(200, 200, 100)
+cell1 = new Cell(200, 200, 100)
+cell2 = new Cell(200, 200, 100)
+var stage = "late_phosphase";
+chrom1a = new Chromosome(185, 185, 10, "blue")
+chrom1b = new Chromosome(215, 185, 5, "blue")
+chrom2a = new Chromosome(185, 215, 10, "red")
+chrom2b = new Chromosome(215, 215, 5, "red")
+
+
+
+function setup() {
+  createCanvas(400, 400);
+}
 
 function draw() {
   background("white");
-  strokeWeight(2)
+  strokeWeight(5)
   show()
-  stroke("red");
-  text("Red = parent 1 chromosomes", 10, 15);
-  stroke("blue");
-  text("Blue = parent 2 chromosomes", 10, 30);
-  stage = "prophase";
-
-//- -    Prophase
-  if (stage == "prophase"){
-    if (chrom1b.x <= width / 2 - (1.15 * chrom1b.size)) {
-      chrom1b.x += 1;
-      chrom2b.x -= 1;
-      chrom1a.x += 1;
-      chrom2a.x -= 1;
-
+  
+//- -    Late_Phosphase_1
+  if (stage == "late_phosphase"){
+    if (stage == "late_phosphase" && chrom1b.x != 185){
+      chrom1b.x = chrom1b.x- 1
+      chrom1b.y = chrom1b.y+ 1
+      chrom2a.x =chrom2a.x+ 1
+      chrom2a.y =chrom2a.y- 1
     }
-    else if(chrom1b.x > width / 2 - (1.15 * chrom1b.size)) {
+    else if(stage == "late_phosphase" &&chrom1b.x == 185) {
+      print (chrom1b.x)
       stage = "metaphase"
+    }}
+//-- Metaphase
+  if (stage == "metaphase"){
+    if (chrom1a.x != 195){
+      chrom1a.x = chrom1a.x + 1
+      chrom1b.x = chrom1b.x + 1
+      chrom2a.x = chrom2a.x - 1
+      chrom2b.x = chrom2b.x - 1
+    }
+    else{
+      stage = "anaphase"
+    }}
+//-- Anaphase
+  if (stage == "anaphase"){
+    if (chrom1a.x != 175){
+      chrom1a.x = chrom1a.x - 1
+      chrom1b.x = chrom1b.x - 1
+      chrom2a.x = chrom2a.x + 1
+      chrom2b.x = chrom2b.x + 1
+  } else {
+    stage = "telophase"
+  }}
+// -- Telophase
+  if (stage == "telophase"){
+    cell.size =1000
+    cell1.size = 80
+    cell2.size = 80
+    if (cell1.x > 175){
+      print(cell1.x)
+      cell1.x = cell1.x -1
+      cell2.x = cell2.x +1
+    }
+    else if (cell1.x != 125){
+      cell1.x = cell1.x -1
+      cell1.y = cell1.y +0.5
+      chrom1a.x = chrom1a.x-1
+      chrom1a.y = chrom1a.y+0.5
+      chrom1b.x = chrom1b.x-1
+      chrom1b.y = chrom1b.y+0.5
+      cell2.x = cell2.x +1
+      cell2.y = cell2.y +0.5
+      chrom2a.x = chrom2a.x+1
+      chrom2a.y = chrom2a.y+0.5
+      chrom2b.x = chrom2b.x+1
+      chrom2b.y = chrom2b.y+0.5
     }
   }
-// //-- Metaphase
-//   if (stage == "metaphase"){
-//     if (chrom2a.x != 205){
-//       chrom1a =  chrom1a +1
-//       chrom1b =  chrom1b+1
-//       chrom2a = chrom2a-1
-//       chrom2b = chrom2b-1
-//     }
-
-  // }
+    
 
 }
-
-
+  
 function show(){
-  cell.draw()
-  chrom1a.draw()
-  chrom1b.draw()
-  chrom2a.draw()
-  chrom2b.draw()
+  cell.show()
+  cell1.show()
+  cell2.show()
+  chrom1a.show()
+  chrom1b.show()
+  chrom2a.show()
+  chrom2b.show()
 }
