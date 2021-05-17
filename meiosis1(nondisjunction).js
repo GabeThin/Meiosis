@@ -327,6 +327,8 @@ function draw() {
       chromatid5a = new Chromatid(285, 282, 12, "red", "red", "green")
       chromatid6a = new Chromatid(360, 282, 12, "red", "blue", "yellow")
 
+      stroke(0)
+      noFill()
       text("assorted chromatids", 15, 330)
     }
 
@@ -338,6 +340,8 @@ function draw() {
 
   if (stage == "finished"){
     chromatid = false
+    stroke(0)
+    noFill()
     text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
     text("produced cells with 3 chromatids, while the other", 10, 65)
     text("cell only passed down 1 chromatid to the gamete.", 10, 80)

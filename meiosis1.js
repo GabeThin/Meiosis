@@ -283,10 +283,7 @@ class Chromosome {
             timer = timer+1
             stroke("black")
             strokeWeight(0)
-            text("Homologous pairs failed to seperate!", 100, 280)
-            text("Nondisjunction will occur.", 120, 295)
-            text("Normally, chromosomes will separate evenly.", 30, 310)
-            text("This results in uneven chromatid assortment.", 30, 325)
+            text("Homologous pairs separate and are divided into 2 cells", 50, 280)
 
 
             strokeWeight(2)
