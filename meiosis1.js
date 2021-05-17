@@ -234,7 +234,7 @@ function draw() {
       cell2.y = cell2.y +0.5
       chrom2a.x = chrom2a.x+1
       chrom2a.y = chrom2a.y+0.5
-      chrom2b.x = chrom2b.x-1
+      chrom2b.x = chrom2b.x+1
       chrom2b.y = chrom2b.y+0.5
     }
     else {
@@ -272,10 +272,7 @@ function draw() {
       timer = timer+1
       stroke("black")
       strokeWeight(0)
-      text("Homologous pairs failed to seperate!", 100, 280)
-      text("Nondisjunction will occur.", 120, 295)
-      text("Normally, chromosomes will separate evenly.", 30, 310)
-      text("This results in uneven chromatid assortment:", 30, 325)
+      text("Homologous pairs separate", 100, 280)
 
 
       strokeWeight(2)

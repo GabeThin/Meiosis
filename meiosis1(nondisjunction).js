@@ -331,7 +331,7 @@ function draw() {
 
       stroke(0)
       fill(0)
-      strokeWeight(1)
+      noStroke()
       text("assorted chromatids (usually haploid)", 15, 330)
     }
 
@@ -345,7 +345,7 @@ function draw() {
     chromatid = false
     chromosome = false
     stroke(0)
-    strokeWeight(1)
+    noStroke()
     fill(0)
     text("Because of nondisjunction, one cell from meiosis 1", 10, 100)
     text("produced cells with 3 chromatids, while the other", 10, 115)
