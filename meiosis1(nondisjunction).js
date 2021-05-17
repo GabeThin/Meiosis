@@ -343,6 +343,7 @@ function draw() {
     chromatid = false
     stroke(0)
     fill(0)
+    print("finished")
     text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
     text("produced cells with 3 chromatids, while the other", 10, 65)
     text("cell only passed down 1 chromatid to the gamete.", 10, 80)

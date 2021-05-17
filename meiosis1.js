@@ -209,7 +209,7 @@ function draw() {
       chrom1a.x = chrom1a.x - 1
       chrom1b.x = chrom1b.x - 1
       chrom2a.x = chrom2a.x + 1
-      chrom2b.x = chrom2b.x - 1
+      chrom2b.x = chrom2b.x + 1
   } else {
     stage = "wait_anaphase"
     nextStage = "telophase"
