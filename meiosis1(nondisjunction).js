@@ -273,7 +273,8 @@ function draw() {
       strokeWeight(0)
       text("Homologous pairs failed to seperate!", 100, 280)
       text("Nondisjunction will occur.", 120, 295)
-      text("Normally, chromosomes will separate evenly.", 10, 310)
+      text("Normally, chromosomes will separate evenly.", 30, 310)
+      text("This results in uneven chromatid assortment.", 30, 325)
 
 
       strokeWeight(2)
