@@ -169,6 +169,7 @@ function draw() {
       chrom1b.y = chrom1b.y+ 1
       chrom2a.x =chrom2a.x+ 1
       chrom2a.y =chrom2a.y- 1
+      text("diploid cell", 15, 330)
     }
     else{
       stage = "wait"
@@ -330,7 +331,8 @@ function draw() {
 
       stroke(0)
       fill(0)
-      text("assorted chromatids", 15, 330)
+      strokeWeight(1)
+      text("assorted chromatids (usually haploid)", 15, 330)
     }
 
     else {
@@ -341,12 +343,13 @@ function draw() {
 
   if (stage == "finished"){
     chromatid = false
+    chromosome = false
     stroke(0)
+    strokeWeight(1)
     fill(0)
-    print("finished")
-    text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
-    text("produced cells with 3 chromatids, while the other", 10, 65)
-    text("cell only passed down 1 chromatid to the gamete.", 10, 80)
+    text("Because of nondisjunction, one cell from meiosis 1", 10, 100)
+    text("produced cells with 3 chromatids, while the other", 10, 115)
+    text("cell only passed down 1 chromatid to the gamete.", 10, 130)
   }
 }
 
