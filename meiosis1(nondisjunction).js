@@ -196,7 +196,7 @@ function draw() {
     chrom2a = new CrossedOverChromosome(chrom2a.x, chrom2a.y, chrom2a.size, chrom2a.parent, "blue", "green", "yellow")
     chrom2b = new CrossedOverChromosome(chrom2b.x, chrom2b.y, chrom2b.size, chrom2b.parent, "blue", "purple", "pink")
     strokeWeight(0)
-    text("Crossing over", 100, 280)
+    text("Crossing over (sites are where colors switch)", 100, 280)
     strokeWeight(5)
 
     if (timer > 90) {

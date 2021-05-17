@@ -1,5 +1,6 @@
 let chromatid = false;
 let chromosome = true;
+let independent = false;
 
 class Chromosome {
     constructor(x, y, size, parent, alleleColor, allele) {
@@ -195,7 +196,7 @@ function draw() {
     chrom2a = new CrossedOverChromosome(chrom2a.x, chrom2a.y, chrom2a.size, chrom2a.parent, "blue", "green", "yellow")
     chrom2b = new CrossedOverChromosome(chrom2b.x, chrom2b.y, chrom2b.size, chrom2b.parent, "blue", "purple", "pink")
     strokeWeight(0)
-    text("Crossing over", 100, 280)
+    text("Crossing over (sites are where colors switch)", 100, 280)
     strokeWeight(5)
 
     if (timer > 90) {
@@ -300,7 +301,7 @@ function draw() {
       noStroke(0)
       fill(0)
       text("Mendel's 4th claim: alleles for each trait (on", 50, 280)
-      text("chromatids) will separate into individual gametes", 50, 295)
+      text("chromatids) will separate into individual gametes:", 50, 295)
 
     }
     else{
@@ -331,15 +332,96 @@ function draw() {
       stroke(0)
       noStroke()
       fill(0)
-      text("assorted chromatids", 15, 330)
-      text("A", 30, 276)
-      text("a", 15, 330)
-      text("B", 15, 330)
-      text("b", 15, 330)
-      text("A", 15, 330)
-      text("a", 15, 330)
-      text("B", 15, 330)
-      text("b", 15, 330)
+      text("assorted chromatids (haploid)", 15, 330)
+      text("A", 25, 265)
+      text("b", 35, 265)
+      text("a", 100, 265)
+      text("B", 110, 265)
+      text("a", 280, 265)
+      text("b", 290, 265)
+      text("A", 355, 265)
+      text("B", 365, 265)
+    }
+
+    else {
+      timer = 0
+      stage = "caption"
+    }
+  }
+
+  if (stage == "caption"){
+    chromatid = false
+    chromosome = false
+    if (timer < 500) {
+      timer = timer+1
+      stroke(0)
+      fill(0)
+      noStroke()
+      text("Mendel's 5th claim: independent assortment of alleles", 10, 50)
+      text("in gametes. Because of tetrad organization, there", 10, 65)
+      text("is another way to assort chromatids into the gametes.", 10, 80)
+      text("Here are all the chromatid assortments without crossing", 10, 95)
+      text("over (in order to simplify allele placement):", 10, 110)
+    }
+
+    else {
+      timer = 0
+      stage = "independent"
+    }
+  }
+
+  if (stage == "independent"){
+    chromatid = true
+    chromosome = true
+    independent = true
+    cell1.size = 1000
+    cell2.size = 1000
+    chrom1a.x = 1000
+    chrom1b.x = 1000
+    chrom2a.x = 1000
+    chrom2b.x = 1000
+
+    if (timer < 500) {
+      timer = timer+1
+
+      cell3 = new Cell(35, 280, 60)
+      cell4 = new Cell(110, 280, 60)
+      cell5 = new Cell(290, 280, 60)
+      cell6 = new Cell(365, 280, 60)
+
+      cell7 = new Cell(35, 180, 65)
+      cell8 = new Cell(110, 180, 65)
+      cell9 = new Cell(290, 180, 65)
+      cell10 = new Cell(365, 180, 65)
+      chrom1 = new Chromosome(35, 170, 10, "blue", "blue", "A")
+      chrom2 = new Chromosome(35, 200, 5, "blue", "blue", "A")
+      chrom3 = new Chromosome(110, 170, 10, "red", "red", "A")
+      chrom4 = new Chromosome(110, 200, 5, "red", "red", "A")
+      chrom5 = new Chromosome(290, 170, 10, "red", "red", "A")
+      chrom6 = new Chromosome(290, 200, 5, "blue", "blue", "A")
+      chrom7 = new Chromosome(365, 170, 10, "blue", "blue", "A")
+      chrom8 = new Chromosome(365, 200, 5, "red", "red", "A")
+
+      chromatid3a = new Chromatid(30, 282, 12, "blue", "blue")
+      chromatid3b = new Chromatid(40, 287, 7, "blue", "blue")
+      chromatid4a = new Chromatid(105, 282, 12, "red", "red")
+      chromatid4b = new Chromatid(115, 287, 7, "red", "red")
+      chromatid5a = new Chromatid(285, 282, 12, "red", "red")
+      chromatid5b = new Chromatid(295, 287, 7, "blue", "blue")
+      chromatid6a = new Chromatid(360, 282, 12, "blue", "blue")
+      chromatid6b = new Chromatid(370, 287, 7, "red", "red")
+
+      stroke(0)
+      noStroke()
+      fill(0)
+      text("A", 25, 265)
+      text("b", 35, 265)
+      text("a", 100, 265)
+      text("B", 110, 265)
+      text("a", 280, 265)
+      text("b", 290, 265)
+      text("A", 355, 265)
+      text("B", 365, 265)
     }
 
     else {
@@ -351,12 +433,20 @@ function draw() {
   if (stage == "finished"){
     chromatid = false
     chromosome = false
+    independent = false
     stroke(0)
     fill(0)
     noStroke()
-    text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
-    text("produced cells with 3 chromatids, while the other", 10, 65)
-    text("cell only passed down 1 chromatid to the gamete.", 10, 80)
+    text("Genetic diversity of gametes is increased by both", 10, 50)
+    text("crossing over and independent assortment. Independent", 10, 65)
+    text("assortment ensures that a gamete will not receive only", 10, 80)
+    text("dominant or only recessive alleles by allowing chromatids.", 10, 95)
+    text("Crossing over allows the switching of sections of alleles", 10, 110)
+    text("between chromatids, which will also allow gametes to have", 10, 125)
+    text("diverse alleles from both parents. Genetic diversity allows", 10, 140)
+    text("a species to evolve; if everyone has the same traits, evolution", 10, 155)
+    text("would be difficult, since advantageous traits would not emerge", 10, 170)
+    text("within the population.", 10, 185)
   }
 }
 
@@ -395,6 +485,25 @@ function show(){
     chromatid5b.show()
     chromatid6a.show()
     chromatid6b.show()
+  }
+
+  if (independent == true) {
+    cell3.show()
+    cell4.show()
+    cell5.show()
+    cell6.show()
+    cell7.show()
+    cell8.show()
+    cell9.show()
+    cell10.show()
+    chrom1.show()
+    chrom2.show()
+    chrom3.show()
+    chrom4.show()
+    chrom5.show()
+    chrom6.show()
+    chrom7.show()
+    chrom8.show()
   }
 
 }
