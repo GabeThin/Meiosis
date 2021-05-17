@@ -1,4 +1,5 @@
 let chromatid = false;
+let chromosome = true;
 
 class Chromosome {
     constructor(x, y, size, parent, alleleColor, allele) {
@@ -352,20 +353,21 @@ function show(){
   // strokeWeight(0)
   // fill(225)
   // rect(0, 80, 400, 320)
-
-  fill("white")
-  strokeWeight(5)
-  cell.show()
-  cell1.show()
-  cell2.show()
-  chrom1a.show()
-  chrom1b.show()
-  chrom2a.show()
-  chrom2b.show()
-  stroke("black")
-  textSize(80)
-  text("MEIOSIS", 30, 70)
-  legend.show()
+  if (chromosome == true) {
+    fill("white")
+    strokeWeight(5)
+    cell.show()
+    cell1.show()
+    cell2.show()
+    chrom1a.show()
+    chrom1b.show()
+    chrom2a.show()
+    chrom2b.show()
+    stroke("black")
+    textSize(80)
+    text("MEIOSIS", 30, 70)
+    legend.show()
+  }
 
   if (chromatid == true) {
     noFill()
