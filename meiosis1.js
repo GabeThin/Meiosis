@@ -104,8 +104,8 @@ class Legend{
     strokeWeight(0)
     textSize(15)
     fill("black")
-    text("A:     B:     ", this.x-150, this.y)
-    text("a:     b:     ", this.x-148, this.y+14)
+    text("B:     a:     ", this.x-150, this.y)
+    text("A:     b:     ", this.x-148, this.y+14)
     strokeWeight(5)
     stroke("pink")
     point(this.x-127, this.y-5)
@@ -274,7 +274,6 @@ function draw() {
       strokeWeight(0)
       text("Homologous pairs separate", 100, 280)
 
-
       strokeWeight(2)
       line(170, 265, 230, 265)
       line(170, 265, 170, 250)
@@ -287,7 +286,7 @@ function draw() {
   }
 
   if (stage == "phosphase_2"){
-    if (timer < waitTime+50){
+    if (timer < waitTime+500){
       timer = timer+1
       if (cell1.y >= 180) {
         cell1.y -= 1
@@ -297,6 +296,11 @@ function draw() {
         chrom2a.y -= 1
         chrom2b.y -= 1
       }
+      stroke(0)
+      noStroke(0)
+      fill(0)
+      text("Mendel's 4th claim: alleles for each trait (on", 50, 280)
+      text("chromatids) will separate into individual gametes", 50, 295)
 
     }
     else{
@@ -317,17 +321,25 @@ function draw() {
 
       chromatid3a = new Chromatid(30, 282, 12, "blue", "blue")
       chromatid3b = new Chromatid(40, 287, 7, "blue", "red")
-      chromatid3c = new Chromatid(50, 287, 7, "red", "red", "purple")
       chromatid4a = new Chromatid(105, 282, 12, "blue", "red")
       chromatid4b = new Chromatid(115, 287, 7, "blue", "blue")
-      chromatid4c = new Chromatid(125, 287, 7, "red", "blue", "pink")
-
       chromatid5a = new Chromatid(285, 282, 12, "red", "red", "green")
+      chromatid5b = new Chromatid(295, 287, 7, "red", "red", "purple")
       chromatid6a = new Chromatid(360, 282, 12, "red", "blue", "yellow")
+      chromatid6b = new Chromatid(370, 287, 7, "red", "blue", "pink")
 
       stroke(0)
-      noFill()
+      noStroke()
+      fill(0)
       text("assorted chromatids", 15, 330)
+      text("A", 30, 276)
+      text("a", 15, 330)
+      text("B", 15, 330)
+      text("b", 15, 330)
+      text("A", 15, 330)
+      text("a", 15, 330)
+      text("B", 15, 330)
+      text("b", 15, 330)
     }
 
     else {
@@ -338,8 +350,10 @@ function draw() {
 
   if (stage == "finished"){
     chromatid = false
+    chromosome = false
     stroke(0)
-    noFill()
+    fill(0)
+    noStroke()
     text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
     text("produced cells with 3 chromatids, while the other", 10, 65)
     text("cell only passed down 1 chromatid to the gamete.", 10, 80)
@@ -375,12 +389,12 @@ function show(){
     cell6.show()
     chromatid3a.show()
     chromatid3b.show()
-    chromatid3c.show()
     chromatid4a.show()
     chromatid4b.show()
-    chromatid4c.show()
     chromatid5a.show()
+    chromatid5b.show()
     chromatid6a.show()
+    chromatid6b.show()
   }
 
 }
