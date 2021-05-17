@@ -310,7 +310,7 @@ function draw() {
 
   if (stage == "meiosis_2"){
     chromatid = true
-    if (timer < 500) {
+    if (timer < 400) {
       timer = timer+1
 
       cell3 = new Cell(35, 280, 60)
@@ -329,7 +329,7 @@ function draw() {
       chromatid6a = new Chromatid(360, 282, 12, "red", "blue", "yellow")
 
       stroke(0)
-      noFill()
+      fill(0)
       text("assorted chromatids", 15, 330)
     }
 
@@ -342,7 +342,7 @@ function draw() {
   if (stage == "finished"){
     chromatid = false
     stroke(0)
-    noFill()
+    fill(0)
     text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
     text("produced cells with 3 chromatids, while the other", 10, 65)
     text("cell only passed down 1 chromatid to the gamete.", 10, 80)
