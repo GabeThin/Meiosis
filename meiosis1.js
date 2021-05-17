@@ -9,6 +9,10 @@ class Chromosome {
       stroke(this.parent)
       line(this.x+this.size, this.y+this.size, this.x-this.size, this.y-this.size)
       line(this.x-this.size, this.y+this.size, this.x+this.size, this.y-this.size)
+      stroke(0);
+      strokeWeight(2);
+      line(this.x-(this.size/1.5), this.y-(this.size/10), this.x-(this.size/10), this.y-(this.size/1.5));
+      text(this.allele, this.x-(this.size), this.y-(this.size));
     }
 
   }
@@ -45,7 +49,7 @@ function draw() {
   background("white");
   strokeWeight(5)
   show()
-  
+
 //- -    Late_Phosphase_1
   if (stage == "late_phosphase"){
     if (stage == "late_phosphase" && chrom1b.x != 185){
@@ -104,10 +108,10 @@ function draw() {
       chrom2b.y = chrom2b.y+0.5
     }
   }
-    
+
 
 }
-  
+
 function show(){
   cell.show()
   cell1.show()
