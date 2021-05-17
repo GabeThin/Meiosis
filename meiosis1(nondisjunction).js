@@ -274,7 +274,7 @@ function draw() {
       text("Homologous pairs failed to seperate!", 100, 280)
       text("Nondisjunction will occur.", 120, 295)
       text("Normally, chromosomes will separate evenly.", 30, 310)
-      text("This results in uneven chromatid assortment.", 30, 325)
+      text("This results in uneven chromatid assortment:", 30, 325)
 
 
       strokeWeight(2)
@@ -308,8 +308,8 @@ function draw() {
   }
 
   if (stage == "meiosis_2"){
-    if (timer < waitTime+300){
-      chromatid = true
+    chromatid = true
+    if (timer < 500) {
       timer = timer+1
 
       cell3 = new Cell(35, 280, 60)
@@ -326,11 +326,21 @@ function draw() {
 
       chromatid5a = new Chromatid(285, 282, 12, "red", "red", "green")
       chromatid6a = new Chromatid(360, 282, 12, "red", "blue", "yellow")
+
+      text("assorted chromatids", 15, 330)
     }
-    else{
+
+    else {
       timer = 0
       stage = "finished"
     }
+  }
+
+  if (stage == "finished"){
+    chromatid = false
+    text("Because of nondisjunction, one cell from meiosis 1", 10, 50)
+    text("produced cells with 3 chromatids, while the other", 10, 65)
+    text("cell only passed down 1 chromatid to the gamete.", 10, 80)
   }
 }
 
