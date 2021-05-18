@@ -335,7 +335,19 @@ function draw() {
       stroke(0)
       fill(0)
       noStroke()
+      textSize(8)
       text("assorted chromatids (usually haploid)", 15, 330)
+
+      text("A", 25, 265)
+      text("b", 35, 265)
+      text("b", 45, 265)
+
+      text("a", 105, 265)
+      text("B", 115, 265)
+      text("B", 125, 265)
+
+      text("a", 280, 265)
+      text("A", 355, 265)
     }
 
     else {
