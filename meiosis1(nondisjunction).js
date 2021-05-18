@@ -164,12 +164,15 @@ function draw() {
 
 //-- Late_Phosphase_1
   if (stage == "late_phosphase"){
+    stroke(0)
+    fill(0)
+    strokeWeight(1)
+    text("diploid cell", 15, 330)
     if (chrom1b.x != 185){
       chrom1b.x = chrom1b.x- 1
       chrom1b.y = chrom1b.y+ 1
       chrom2a.x =chrom2a.x+ 1
       chrom2a.y =chrom2a.y- 1
-      text("diploid cell", 15, 330)
     }
     else{
       stage = "wait"
