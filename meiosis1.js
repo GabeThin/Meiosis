@@ -1,6 +1,7 @@
 let chromatid = false;
 let chromosome = true;
 let independent = false;
+let label = true;
 
 class Chromosome {
     constructor(x, y, size, parent, alleleColor, allele) {
@@ -165,6 +166,7 @@ function draw() {
 
 //-- Late_Phosphase_1
   if (stage == "late_phosphase"){
+    label = false;
     if (chrom1b.x != 185){
       chrom1b.x = chrom1b.x- 1
       chrom1b.y = chrom1b.y+ 1
@@ -195,7 +197,7 @@ function draw() {
     chrom1b = new CrossedOverChromosome(chrom1b.x, chrom1b.y, chrom1b.size, chrom1b.parent, "red", "pink")
     chrom2a = new CrossedOverChromosome(chrom2a.x, chrom2a.y, chrom2a.size, chrom2a.parent, "blue", "green", "yellow")
     chrom2b = new CrossedOverChromosome(chrom2b.x, chrom2b.y, chrom2b.size, chrom2b.parent, "blue", "purple", "pink")
-    strokeWeight(0)
+    noStroke()
     text("Crossing over (sites are where colors switch)", 100, 280)
     strokeWeight(5)
 
@@ -255,7 +257,7 @@ function draw() {
     if (timer < waitTime+50){
       timer = timer+1
       stroke("black")
-      strokeWeight(0)
+      noStroke()
       text("Homologous pairs forming Tetrads", 100, 280)
       strokeWeight(2)
       line(170, 265, 230, 265)
@@ -298,7 +300,7 @@ function draw() {
         chrom2b.y -= 1
       }
       stroke(0)
-      noStroke(0)
+      noStroke()
       fill(0)
       text("Mendel's 4th claim: alleles for each trait (on", 50, 280)
       text("chromatids) will separate into individual gametes:", 50, 295)
@@ -411,7 +413,7 @@ function draw() {
       chromatid6a = new Chromatid(360, 282, 12, "blue", "blue")
       chromatid6b = new Chromatid(370, 287, 7, "red", "red")
 
-      stroke(0)
+      noStroke()
       noStroke()
       fill(0)
       text("A", 25, 265)
@@ -504,6 +506,13 @@ function show(){
     chrom6.show()
     chrom7.show()
     chrom8.show()
+  }
+
+  if (label == true) {
+    stroke(0)
+    fill(0)
+    noStroke()
+    text("diploid cell", 60, 220)
   }
 
 }

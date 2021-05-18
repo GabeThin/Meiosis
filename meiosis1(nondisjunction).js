@@ -1,5 +1,6 @@
 let chromatid = false;
 let chromosome = true;
+let label = true;
 
 class Chromosome {
     constructor(x, y, size, parent, alleleColor, allele) {
@@ -150,10 +151,8 @@ timer = 0
 waitTime = 100
 
 
-
 function setup() {
   createCanvas(400, 400);
-
 }
 
 function draw() {
@@ -164,10 +163,7 @@ function draw() {
 
 //-- Late_Phosphase_1
   if (stage == "late_phosphase"){
-    stroke(0)
-    fill(0)
-    strokeWeight(1)
-    text("diploid cell", 15, 330)
+    label = false;
     if (chrom1b.x != 185){
       chrom1b.x = chrom1b.x- 1
       chrom1b.y = chrom1b.y+ 1
@@ -275,7 +271,7 @@ function draw() {
     if (timer < waitTime+200){
       timer = timer+1
       stroke("black")
-      strokeWeight(0)
+      noStroke()
       text("Homologous pairs failed to seperate!", 100, 280)
       text("Nondisjunction will occur.", 120, 295)
       text("Normally, chromosomes will separate evenly.", 30, 310)
@@ -405,6 +401,13 @@ function show(){
     chromatid4c.show()
     chromatid5a.show()
     chromatid6a.show()
+  }
+
+  if (label == true) {
+    stroke(0)
+    fill(0)
+    noStroke()
+    text("diploid cell", 60, 220)
   }
 
 }
