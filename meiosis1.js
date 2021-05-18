@@ -415,13 +415,13 @@ function draw() {
       noStroke()
       fill(0)
       text("A", 25, 265)
-      text("b", 35, 265)
+      text("B", 35, 265)
       text("a", 100, 265)
-      text("B", 110, 265)
+      text("b", 110, 265)
       text("a", 280, 265)
-      text("b", 290, 265)
+      text("B", 290, 265)
       text("A", 355, 265)
-      text("B", 365, 265)
+      text("b", 365, 265)
     }
 
     else {
